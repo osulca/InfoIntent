@@ -2,6 +2,8 @@ package com.example.exchangeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -11,7 +13,7 @@ TextView tvRespuesta;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-    // con bundle
+/*    // con bundle
         Bundle bundle = getIntent().getExtras();
     // sin bundle
         String altusuario = getIntent().getExtras().getString(MainActivity.USER);
@@ -28,8 +30,18 @@ TextView tvRespuesta;
         }else{
             mensaje = "Error";
         }
-
         tvRespuesta = findViewById(R.id.tvResultado);
         tvRespuesta.setText(mensaje);
+        */
+
+        int nuevoNro1 = getIntent().getExtras().getInt("nro1");
+        int nuevoNro2 = getIntent().getExtras().getInt("nro2");
+
+        int suma = nuevoNro1 + nuevoNro2;
+
+        Intent intentRespuesta = new Intent();
+        intentRespuesta.putExtra("respuesta", suma);
+        setResult(Activity.RESULT_OK, intentRespuesta);
+        finish();
     }
 }
